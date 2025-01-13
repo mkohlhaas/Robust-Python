@@ -1,0 +1,12 @@
+[project]
+name = "robust-python"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "monkeytype>=23.3.0",
+    "mypy>=1.14.1",
+    "pydantic>=2.10.5",
+    "stevedore>=5.4.0",
+]
