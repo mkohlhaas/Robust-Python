@@ -1,6 +1,7 @@
-import datetime
 import random
-from typing import List
+from datetime import datetime
+
+OWNER = "Pat"
 
 
 class WorkerDatabase:
@@ -8,32 +9,18 @@ class WorkerDatabase:
         return []
 
 
-def get_emergency_workers():
+def get_emergency_workers() -> list[str]:
     return []
 
 
-def is_available(name: str):
+def is_available(_name: str) -> bool:
     return True
 
 
-worker_database = WorkerDatabase()
-OWNER = "Pat"
-
-
-def schedule(worker, open_time):
-    pass
-
-
-def schedule_restaurant_open(open_time: datetime.datetime, workers_needed: int):
-    workers = find_workers_available_for_time(open_time)
-    # use random.sample to pick X available workers
-    # where X is the number of workers needed.
-    for worker in random.sample(workers, workers_needed):
-        schedule(worker, open_time)
-
-
-def find_workers_available_for_time(open_time: datetime.datetime):
-    workers = worker_database.get_all_workers()
+def find_workers_available_for_time(
+    db: WorkerDatabase, _open_time: datetime
+) -> list[str]:
+    workers = db.get_all_workers()
     available_workers = [worker for worker in workers if is_available(worker)]
     if available_workers:
         return available_workers
@@ -51,4 +38,21 @@ def find_workers_available_for_time(open_time: datetime.datetime):
     return [OWNER]
 
 
-assert find_workers_available_for_time(datetime.datetime.now()) == ["Pat"]
+# functions with side-effects (return type = None)
+def schedule(_worker, _open_time):
+    pass
+
+
+def schedule_restaurant_open(
+    db: WorkerDatabase, open_time: datetime, num_workers_needed: int
+):
+    workers = find_workers_available_for_time(db, open_time)
+    # use random.sample to pick X available workers
+    # where X is the number of workers needed.
+    for worker in random.sample(workers, num_workers_needed):
+        schedule(worker, open_time)
+
+
+if __name__ == "__main__":
+    db = WorkerDatabase()
+    assert find_workers_available_for_time(db, datetime.now()) == ["Pat"]

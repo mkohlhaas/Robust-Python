@@ -1,6 +1,6 @@
-from find_workers import find_workers_available_for_time
 import datetime
-from typing import List
+
+from find_workers import WorkerDatabase, find_workers_available_for_time
 
 
 def get_ratio(*args):
@@ -12,7 +12,8 @@ class Worker:
 
 
 open_time = datetime.datetime.now()
-workers: list[str] = find_workers_available_for_time(open_time)
+db = WorkerDatabase()
+workers: list[str] = find_workers_available_for_time(db, open_time)
 numbers: list[int] = []
 ratio: float = get_ratio(5, 3)
 

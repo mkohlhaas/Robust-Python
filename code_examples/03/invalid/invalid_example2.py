@@ -2,7 +2,7 @@
 # to the end
 # [1,2,3] => [1,2,3,2,4,6]
 def add_doubled_values(my_list: list[int]):
-    my_list.update([x * 2 for x in my_list])
+    my_list.update([x * 2 for x in my_list])  # should be 'extend' instead of 'update'
 
 
 try:
