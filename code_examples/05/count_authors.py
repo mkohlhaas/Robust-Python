@@ -7,11 +7,13 @@ class Cookbook:
     author: str
 
 
-AuthorToCountMapping = dict[str, int]
+type AuthorName = str
+type NumBoooks = int
+type AuthorToCountMapping = dict[AuthorName, NumBoooks]
 
 
 def create_author_count_mapping(cookbooks: list[Cookbook]) -> AuthorToCountMapping:
-    counter: dict[str, int] = defaultdict(lambda: 0)
+    counter: dict[AuthorName, NumBoooks] = defaultdict(lambda: 0)
     for book in cookbooks:
         counter[book.author] += 1
     return counter

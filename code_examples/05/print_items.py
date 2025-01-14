@@ -1,8 +1,7 @@
-import collections
-import collections.abc
+from collections.abc import Iterable
 
 
-def print_items(items: collections.abc.Iterable):
+def print_items(items: Iterable):
     for item in items:
         print(item)
 

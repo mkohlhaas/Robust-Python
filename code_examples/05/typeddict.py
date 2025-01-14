@@ -1,10 +1,7 @@
-from typing import TypedDict
-
-
 recipe_name = "Pasta Bolognese"
 
 
-def get_nutrition_from_spoonacular(recipe: str):
+def get_nutrition_from_spoonacular(_recipe: str):
     return RecipeNutritionInformation(
         {
             "recipes_used": 1,
@@ -36,19 +33,19 @@ def get_nutrition_from_spoonacular(recipe: str):
     )
 
 
-class Range(TypedDict):
+class Range(dict):
     min: float
     max: float
 
 
-class NutritionInformation(TypedDict):
+class NutritionInformation(dict):
     value: int
     unit: str
     confidenceRange95Percent: Range
     standardDeviation: float
 
 
-class RecipeNutritionInformation(TypedDict):
+class RecipeNutritionInformation(dict):
     recipes_used: int
     calories: NutritionInformation
     fat: NutritionInformation

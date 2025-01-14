@@ -1,14 +1,17 @@
+# Using UserDict instead of just `dict`
+
 from collections import UserDict
 
 
-def get_nutrition_information(text):
-    print(text)
+def get_nutrition_information(_text):
     return "arugula"
 
 
-def get_aliases(text):
+def get_aliases(text) -> list[str]:
     if text == "rocket":
         return ["arugula"]
+    else:
+        return []
 
 
 class NutritionalInformation(UserDict):
@@ -17,6 +20,7 @@ class NutritionalInformation(UserDict):
             return self.data[key]
         except KeyError:
             pass
+        # not found, try aliases
         for alias in get_aliases(key):
             try:
                 return self.data[alias]
@@ -25,8 +29,13 @@ class NutritionalInformation(UserDict):
         raise KeyError(f"Could not find {key} or any of its aliases")
 
 
-nutrition = NutritionalInformation()
-nutrition["arugula"] = get_nutrition_information("arugula")
+if __name__ == "__main__":
+    nutrition = NutritionalInformation()
+    nutrition["arugula"] = get_nutrition_information("arugula")
 
-assert nutrition["arugula"] == nutrition["rocket"]  # arugula == rocket
-assert nutrition.get("rocket", "No Key Found") == nutrition["arugula"]
+    assert nutrition["arugula"] == nutrition["rocket"]
+
+    # `get` doesn't call our __getitem__ method!
+    # assert (
+    #     nutrition.get("rocket", "No Key Found") == nutrition["arugula"]
+    # )

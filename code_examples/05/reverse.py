@@ -1,9 +1,13 @@
-from typing import TypeVar, List
+# from typing import TypeVar
 
-T = TypeVar("T")
+# T = TypeVar("T")
 
 
-def reverse(coll: list[T]) -> list[T]:
+# def reverse(coll: list[T]) -> list[T]:
+#     return coll[::-1]
+
+
+def reverse[T](coll: list[T]) -> list[T]:
     return coll[::-1]
 
 

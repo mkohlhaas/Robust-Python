@@ -1,6 +1,6 @@
-from typing import TypeVar, Union, List
+# from typing import TypeVar
 
-T = TypeVar("T")
+# T = TypeVar("T")
 
 
 class NutritionInfo:
@@ -19,16 +19,16 @@ class APIErrorResponse:
     pass
 
 
-APIResponse = Union[T, APIErrorResponse]
+type APIResponse[T] = T | APIErrorResponse
 
 
-def get_nutrition_info(recipe: str) -> APIResponse[NutritionInfo]:
+def get_nutrition_info(_recipe: str) -> APIResponse[NutritionInfo]:
     return APIErrorResponse()
 
 
-def get_ingredients(recipe: str) -> APIResponse[list[Ingredient]]:
+def get_ingredients(_recipe: str) -> APIResponse[list[Ingredient]]:
     return []
 
 
-def get_restaurants_serving(recipe: str) -> APIResponse[list[Restaurant]]:
+def get_restaurants_serving(_recipe: str) -> APIResponse[list[Restaurant]]:
     return [Restaurant()]
