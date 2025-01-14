@@ -14,6 +14,15 @@ class Snack:
     condiments: set[Literal["Mustard", "Ketchup"]]
 
 
-Error(0, False)
-Snack("Not Valid", set())
-Snack("Pretzel", {"Mustard", "Relish"})
+if __name__ == "__main__":
+    _ = Error(1, False)
+    _ = Error(2, True)
+    _ = Snack("Pretzel", {"Mustard"})
+    _ = Snack("Pretzel", {"Ketchup"})
+    _ = Snack("Pretzel", {"Mustard", "Ketchup"})
+    _ = Snack("Hot Dog", {"Ketchup", "Mustard"})
+
+    # wrong states
+    # _ = Error(0, False)
+    # _ = Snack("Not Valid", set())
+    # _ = Snack("Pretzel", {"Mustard", "Relish"})

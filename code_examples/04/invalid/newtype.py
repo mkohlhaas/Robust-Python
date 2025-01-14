@@ -1,9 +1,18 @@
 from typing import NewType
 
 
-class Bun:
-    def add_frank(frank: str):
+class HotDog:
+    def add_condiments(self, *_args):
         pass
+
+
+class Bun:
+    def add_frank(self, frank: str) -> HotDog:
+        print(f"Adding frank: {frank}")
+        return HotDog()
+
+
+ReadyToServeHotDog = NewType("ReadyToServeHotDog", HotDog)
 
 
 def dispense_bun() -> Bun:
@@ -18,12 +27,7 @@ def dispense_mustard():
     return None
 
 
-class HotDog:
-    def add_condiments(self, *args):
-        pass
-
-
-def dispense_hot_dog_to_customer(hot_dog: HotDog):
+def dispense_hot_dog_to_customer(_hot_dog: HotDog):
     pass
 
 
@@ -31,11 +35,8 @@ def dispense_frank() -> str:
     return "Frank"
 
 
-def serve_to_customer(*args):
+def serve_to_customer(*_args: ReadyToServeHotDog):
     pass
-
-
-ReadyToServeHotDog = NewType("ReadyToServeHotDog", HotDog)
 
 
 def create_hot_dog():
@@ -48,8 +49,6 @@ def create_hot_dog():
     dispense_hot_dog_to_customer(hot_dog)
 
 
-def make_snack():
+if __name__ == "__main__":
     serve_to_customer(ReadyToServeHotDog(HotDog()))
-
-
-make_snack()
+    print("Hotdog served!")

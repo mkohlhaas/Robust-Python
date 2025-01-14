@@ -10,3 +10,6 @@ dependencies = [
     "pydantic>=2.10.5",
     "stevedore>=5.4.0",
 ]
+
+[tool.uv.workspace]
+members = ["code_examples/04"]

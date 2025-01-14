@@ -1,5 +1,6 @@
 from dataclasses import dataclass
-from typing import Union, Set
+
+# from typing import Union
 
 
 @dataclass
@@ -14,6 +15,7 @@ class Snack:
     condiments: set[str]
 
 
-snack: Union[Snack, Error] = Snack("Hotdog", {"Mustard", "Ketchup"})
+# snack: Union[Snack, Error] = Snack("Hotdog", {"Mustard", "Ketchup"})
 
+snack: Snack | Error = Snack("Hotdog", {"Mustard", "Ketchup"})
 snack = Error(5, True)

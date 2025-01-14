@@ -1,40 +1,48 @@
-from typing import Optional
+from random import choice
+from typing import Literal, Optional
 
 
 class HotDog:
-    def add_condiments(self, *args):
+    def add_condiments(self, *_args):
         return None
 
 
 class Bun:
-    def add_frank(self, *args) -> HotDog:
+    def add_frank(self, *_args) -> HotDog:
         return HotDog()
 
 
+# return type not specific enough
 def dispense_frank() -> str:
     return "frank"
 
 
-def dispense_hot_dog():
+def dispense_hot_dog() -> HotDog:
     return HotDog()
 
 
-def dispense_ketchup():
+# def dispense_ketchup():
+def dispense_ketchup() -> Literal["Ketchup"]:
     return "Ketchup"
 
 
-def dispense_mustard():
+def dispense_mustard() -> Literal["Mustard"]:
     return "Mustard"
 
 
 def dispense_bun() -> Optional[Bun]:
-    if False:
+    if choice([False, True]):
         return None
-    return Bun()
+    else:
+        return Bun()
 
 
-def dispense_hot_dog_to_customer(hot_dog):
+def dispense_hot_dog_to_customer(_hot_dog):
     pass
+
+
+def print_error_code(msg: str):
+    print(msg)
 
 
 def create_hot_dog():
@@ -49,6 +57,8 @@ def create_hot_dog():
     mustard = dispense_mustard()
     hot_dog.add_condiments(ketchup, mustard)
     dispense_hot_dog_to_customer(hot_dog)
+    print("Bun dispensed to customer.")
 
 
-create_hot_dog()
+if __name__ == "__main__":
+    create_hot_dog()

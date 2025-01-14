@@ -1,15 +1,15 @@
-def dispense_bun():
-    return Bun()
-
-
 class HotDog:
-    def add_condiments(self, *args):
+    def add_condiments(self, *_args):
         pass
 
 
 class Bun:
-    def add_frank(self, frank: str) -> HotDog:
+    def add_frank(self, _frank: str) -> HotDog:
         return HotDog()
+
+
+def dispense_bun():
+    return Bun()
 
 
 def dispense_ketchup():
@@ -24,7 +24,7 @@ def dispense_frank() -> str:
     return "frank"
 
 
-def dispense_hot_dog_to_customer(hot_dog: HotDog):
+def dispense_hot_dog_to_customer(_hot_dog: HotDog):
     pass
 
 

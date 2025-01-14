@@ -1,15 +1,21 @@
-def dispense_bun():
-    return Bun()
+from random import choice
 
 
 class HotDog:
-    def add_condiments(self, *args):
+    def add_condiments(self, *_args: str):
         pass
 
 
 class Bun:
-    def add_frank(self, frank: str) -> HotDog:
+    def add_frank(self, _frank: str) -> HotDog | None:
         return HotDog()
+
+
+def dispense_bun() -> Bun | None:
+    if choice([False, True]):
+        return Bun()
+    else:
+        return None
 
 
 def dispense_ketchup():
@@ -20,12 +26,16 @@ def dispense_mustard():
     return None
 
 
-def dispense_frank() -> str:
+def dispense_frank() -> str | None:
     return "frank"
 
 
-def dispense_hot_dog_to_customer(hot_dog: HotDog):
+def dispense_hot_dog_to_customer(_hot_dog: HotDog):
     pass
+
+
+def print_error_code(msg: str):
+    print(msg)
 
 
 def create_hot_dog():
@@ -47,8 +57,12 @@ def create_hot_dog():
     ketchup = dispense_ketchup()
     mustard = dispense_mustard()
     if ketchup is None or mustard is None:
-        print_error_code("Check for invalid catsup")
+        print_error_code("Check for invalid catsup.")
         return
 
     hot_dog.add_condiments(ketchup, mustard)
     dispense_hot_dog_to_customer(hot_dog)
+
+
+if __name__ == "__main__":
+    create_hot_dog()

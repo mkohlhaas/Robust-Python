@@ -1,4 +1,5 @@
 from typing import Final
 
-x: Final[int] = 5
-x = 3
+if __name__ == "__main__":
+    x: Final[int] = 5
+    x = 3

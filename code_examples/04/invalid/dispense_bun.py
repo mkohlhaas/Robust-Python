@@ -3,11 +3,11 @@ class Bun:
         pass
 
 
-def are_buns_available():
+def are_buns_available() -> bool:
     return False
 
 
-def dispense_bun() -> Bun:
+def dispense_bun() -> Bun | None:
     if not are_buns_available():
         return None
     return Bun("Wheat")
