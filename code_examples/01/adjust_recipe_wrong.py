@@ -1,7 +1,8 @@
-# Take a meal recipe and change the number of servings
-# by adjusting each ingredient
+# Take a meal recipe and change the number of servings by adjusting each ingredient.
 # A recipe's first element is the number of servings, and the remainder
 # of elements is (name, amount, unit), such as ("flour", 1.5, "cup")
+
+
 def adjust_recipe(recipe, servings):
     old_servings = recipe.pop(0)
     factor = servings / old_servings

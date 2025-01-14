@@ -1,15 +1,17 @@
 from collections import defaultdict
 from dataclasses import dataclass
-from typing import Dict, List
+
+type Author = str
+type Number_of_Books = int
 
 
 @dataclass
 class Cookbook:
-    author: str
+    author: Author
 
 
 def create_author_count_mapping(cookbooks: list[Cookbook]):
-    counter: dict[str, int] = defaultdict(lambda: 0)
+    counter: dict[Author, Number_of_Books] = defaultdict(lambda: 0)
     for cookbook in cookbooks:
         counter[cookbook.author] += 1
     return counter

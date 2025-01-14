@@ -1,6 +1,5 @@
 from collections import Counter
 from dataclasses import dataclass
-from typing import List
 
 
 @dataclass
@@ -9,7 +8,7 @@ class Cookbook:
 
 
 def create_author_count_mapping(cookbooks: list[Cookbook]):
-    return Counter(book.author for book in cookbooks)
+    return Counter(cookbook.author for cookbook in cookbooks)
 
 
 def test_create_author_count():
