@@ -1,5 +1,3 @@
-from typing import List
-
 from enum import Enum
 
 
@@ -15,7 +13,7 @@ MotherSauce.BÉCHAMEL
 MotherSauce.HOLLANDAISE
 
 
-MotherSauce("Hollandaise")  # OKAY
+MotherSauce("Hollandaise")
 
 try:
     MotherSauce("Alabama White BBQ Sauce")
@@ -33,7 +31,7 @@ assert list(enumerate(MotherSauce, start=1)) == [
 ]
 
 
-def create_daughter_sauce(mother_sauce: MotherSauce, extra_ingredients: list[str]):
+def create_daughter_sauce(_mother_sauce: MotherSauce, _extra_ingredients: list[str]):
     pass
 
 

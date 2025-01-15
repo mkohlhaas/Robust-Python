@@ -1,5 +1,3 @@
-from typing import List
-
 BÉCHAMEL = "Béchamel"
 VELOUTÉ = "Velouté"
 ESPAGNOLE = "Espagnole"
@@ -10,7 +8,7 @@ MOTHER_SAUCES = (BÉCHAMEL, VELOUTÉ, ESPAGNOLE, TOMATO, HOLLANDAISE)
 assert MOTHER_SAUCES[2] == "Espagnole"
 
 
-def create_daughter_sauce(mother_sauce: str, extra_ingredients: list[str]):
+def create_daughter_sauce(_mother_sauce: str, _extra_ingredients: list[str]):
     pass
 
 
