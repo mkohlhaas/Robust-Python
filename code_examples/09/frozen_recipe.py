@@ -1,5 +1,4 @@
 from dataclasses import dataclass, FrozenInstanceError
-from typing import Set
 import datetime
 
 from enum import auto, Enum
@@ -59,7 +58,7 @@ try:
     # this is an error
     soup.broth = Broth.VEGETABLE  # type: ignore
     assert False
-except FrozenInstanceError as e:
+except FrozenInstanceError as _e:
     pass
 
 # this is not an error
