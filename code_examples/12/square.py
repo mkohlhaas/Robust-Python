@@ -38,8 +38,9 @@ def double_width(rectangle: Rectangle):
     assert rectangle.get_height() == old_height
 
 
-try:
-    double_width(Square(5))
-    raise RuntimeError("This should not pass")
-except AssertionError:
-    print("Expected assert")
+if __name__ == "__main__":
+    try:
+        double_width(Square(5))
+        raise RuntimeError("This should not pass")
+    except AssertionError:
+        print("Expected assert.")

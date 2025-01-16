@@ -1,6 +1,3 @@
-from typing import TypeVar
-
-
 def double(x):
     return x + x
 

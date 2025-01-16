@@ -11,7 +11,7 @@ class Ingredient:
 
 
 class Menu:
-    def contains(self, ingredient: Ingredient) -> bool:
+    def contains(self, _ingredient: Ingredient) -> bool:
         return True
 
 
@@ -44,16 +44,16 @@ class Restaurant:
         self.menu = menu
         self.finances = finances
 
-    def transfer_employees(self, employees: list[Employee], restaurant: "Restaurant"):
+    def transfer_employees(self, _employees: list[Employee], _restaurant: "Restaurant"):
         pass
 
-    def order_dish(self, dish: Dish):
+    def order_dish(self, _dish: Dish):
         pass
 
-    def add_inventory(self, ingredients: list[Ingredient], cost_in_cents: int):
+    def add_inventory(self, _ingredients: list[Ingredient], _cost_in_cents: int):
         pass
 
-    def register_hours_employee_worked(self, employee: Employee, minutes_worked: int):
+    def register_hours_employee_worked(self, _employee: Employee, _minutes_worked: int):
         pass
 
     def get_restaurant_data(self) -> RestaurantData:
@@ -62,7 +62,7 @@ class Restaurant:
     def change_menu(self, menu: Menu):
         self.__menu = menu
 
-    def move_location(self, new_location: Coordinates):
+    def move_location(self, _new_location: Coordinates):
         pass
 
 
@@ -75,7 +75,7 @@ def initialize_gps():
     return GPS()
 
 
-def schedule_auto_driving_task(location: Coordinates):
+def schedule_auto_driving_task(_location: Coordinates):
     pass
 
 
@@ -112,13 +112,8 @@ food_truck.move_location(Coordinates())
 
 
 def display_restaurant_data(restaurant: Restaurant):
-    data = restaurant.get_restaurant_data()
+    _data = restaurant.get_restaurant_data()
     # ... snip drawing code here ...
-
-
-restaurants: list[Restaurant] = [food_truck]
-for restaurant in restaurants:
-    display_restaurant_data(restaurant)
 
 
 class RestrictedMenuRestaurant(Restaurant):
@@ -141,6 +136,11 @@ class RestrictedMenuRestaurant(Restaurant):
             return super().change_menu(menu)
 
 
-RestrictedMenuRestaurant(
-    "Name", Coordinates(), [], [], Menu(), Finances(), []
-).change_menu(Menu())
+if __name__ == "__main__":
+    restaurants: list[Restaurant] = [food_truck]
+    for restaurant in restaurants:
+        display_restaurant_data(restaurant)
+
+    RestrictedMenuRestaurant(
+        "Name", Coordinates(), [], [], Menu(), Finances(), []
+    ).change_menu(Menu())
