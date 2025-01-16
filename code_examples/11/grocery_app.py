@@ -1,7 +1,9 @@
 import decimal
+from contextlib import contextmanager
+from copy import deepcopy
 from dataclasses import dataclass
-from enum import auto, Enum
-from typing import Dict, Iterable, List, Tuple
+from enum import Enum, auto
+from typing import Iterable, Optional
 
 
 class ImperialMeasure(Enum):
@@ -48,9 +50,6 @@ class Recipe:
     servings: int
 
 
-from dataclasses import dataclass
-
-
 @dataclass(frozen=True)
 class Coordinates:
     lat: float
@@ -81,7 +80,8 @@ spaghetti = Item(
     amount=4,
     price_in_cents=decimal.Decimal(160),
 )
-reserved_items: list[Item] = []
+
+# reserved_items: list[Item] = []
 delivered_items: list[Item] = []
 
 
@@ -90,20 +90,16 @@ def get_grocery_inventory() -> Inventory:
     return {Store(Coordinates(0, 0), "Pat's Market"): [spaghetti]}
 
 
-def reserve_items(store: Store, items: Iterable[Item]) -> bool:
+def reserve_items(_store: Store, _items: Iterable[Item]) -> bool:
     return True
 
 
-def unreserve_items(store: Store, items: Iterable[Item]) -> bool:
+def unreserve_items(_store: Store, _items: Iterable[Item]) -> bool:
     return True
 
 
-def order_items(store: Store, items: Iterable[Item]) -> bool:
+def order_items(_store: Store, _items: Iterable[Item]) -> bool:
     return True
-
-
-from typing import Iterable, Optional, Set
-from copy import deepcopy
 
 
 class Order:
@@ -154,7 +150,7 @@ class Order:
         return self.__confirmed
 
 
-def display_order(order: Order):
+def display_order(_order: Order):
     pass
 
 
@@ -187,16 +183,13 @@ class _GroceryList:
         return [spaghetti]
 
 
-def wait_for_user_grocery_confirmation(grocery_list: _GroceryList):
+def wait_for_user_grocery_confirmation(_grocery_list: _GroceryList):
     pass
 
 
 def deliver_ingredients(grocery_list: _GroceryList):
     global delivered_items
     delivered_items += grocery_list.get_grocery_order()
-
-
-from contextlib import contextmanager
 
 
 @contextmanager
@@ -209,7 +202,7 @@ def create_grocery_list(order: Order, inventory: Inventory):
             grocery_list.unreserve_items()
 
 
-def make_order(recipes):
+def make_order(recipes: Iterable[Recipe]):
     order = Order(recipes)
     # the user can make changes if needed
     display_order(order)
@@ -233,15 +226,15 @@ def test_order():
                     Ingredient(
                         "Spaghetti",
                         "Pat's Homemade",
-                        units=ImperialMeasure.CUP,
                         amount=2,
+                        units=ImperialMeasure.CUP,
                     )
                 ],
                 servings=1,
             )
         ]
     )
-    assert reserved_items == []
+    # assert reserved_items == []
     assert delivered_items == [spaghetti]
 
 
