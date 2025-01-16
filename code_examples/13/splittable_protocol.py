@@ -1,13 +1,14 @@
 from math import ceil
-from typing import Protocol
+from typing import Protocol, runtime_checkable
 
 
+@runtime_checkable
 class Splittable(Protocol):
     cost: int
     name: str
 
     def split_in_half(self) -> tuple["Splittable", "Splittable"]:
-        # this is a literal ellipsis to indicate a stub function
+        # This is a literal ellipsis to indicate a stub function!!!
         ...
 
 
@@ -40,6 +41,9 @@ class Chili:
         return (Chili(), Chili())
 
 
+assert isinstance(BLTSandwich(), Splittable)
+
+
 def split_dish(dish):
     dishes = dish.split_in_half()
     assert len(dishes) == 2
@@ -49,16 +53,17 @@ def split_dish(dish):
     return dishes
 
 
-sandwich = BLTSandwich()
-dishes = split_dish(sandwich)
-assert dishes[0].cost == 3.5
-assert dishes[0].name == "½ BLT"
-assert dishes[0].cost == dishes[1].cost
-assert dishes[0].name == dishes[1].name
+if __name__ == "__main__":
+    blt_sandwich = BLTSandwich()
+    dishes = split_dish(blt_sandwich)
+    assert dishes[0].cost == 3.5
+    assert dishes[0].name == "½ BLT"
+    assert dishes[0].cost == dishes[1].cost
+    assert dishes[0].name == dishes[1].name
 
-sandwich = Chili()
-dishes = split_dish(sandwich)
-assert dishes[0].cost == 2.5
-assert dishes[0].name == "½ Chili"
-assert dishes[0].cost == dishes[1].cost
-assert dishes[0].name == dishes[1].name
+    chili_sandwich = Chili()
+    dishes = split_dish(chili_sandwich)
+    assert dishes[0].cost == 2.5
+    assert dishes[0].name == "½ Chili"
+    assert dishes[0].cost == dishes[1].cost
+    assert dishes[0].name == dishes[1].name

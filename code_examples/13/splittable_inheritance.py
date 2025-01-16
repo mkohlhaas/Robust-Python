@@ -48,9 +48,10 @@ def split_dish(dish):
     return dishes
 
 
-sandwich = BLTSandwich()
-dishes = split_dish(sandwich)
-assert dishes[0].cost == 3.5
-assert dishes[0].name == "½ BLT"
-assert dishes[0].cost == dishes[1].cost
-assert dishes[0].name == dishes[1].name
+if __name__ == "__main__":
+    sandwich = BLTSandwich()
+    dishes = split_dish(sandwich)
+    assert dishes[0].cost == 3.5
+    assert dishes[0].name == "½ BLT"
+    assert dishes[0].cost == dishes[1].cost
+    assert dishes[0].name == dishes[1].name

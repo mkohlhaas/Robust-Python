@@ -16,7 +16,8 @@ class ShuffleIterator:
         return self.sequence.pop(0)
 
 
-my_list = [1, 2, 3, 4]
-iterator: Iterator = ShuffleIterator(my_list)
+if __name__ == "__main__":
+    my_list = [1, 2, 3, 4]
+    iterator: Iterator = ShuffleIterator(my_list)
 
-assert {1, 2, 3, 4} == {n for n in iterator}
+    assert {1, 2, 3, 4} == {n for n in iterator}

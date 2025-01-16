@@ -1,4 +1,4 @@
-from typing import runtime_checkable, Protocol, Tuple
+from typing import runtime_checkable, Protocol
 
 
 @runtime_checkable

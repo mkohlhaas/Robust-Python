@@ -49,24 +49,24 @@ def split_dish(dish):
     return dishes
 
 
-sandwich = BLTSandwich()
-dishes = split_dish(sandwich)
-assert dishes[0].cost == 3.5
-assert dishes[0].name == "½ BLT"
-assert dishes[0].cost == dishes[1].cost
-assert dishes[0].name == dishes[1].name
+if __name__ == "__main__":
+    blt_sandwich = BLTSandwich()
+    dishes = split_dish(blt_sandwich)
+    assert dishes[0].cost == 3.5
+    assert dishes[0].name == "½ BLT"
+    assert dishes[0].cost == dishes[1].cost
+    assert dishes[0].name == dishes[1].name
 
-sandwich = Chili()
-dishes = split_dish(sandwich)
-assert dishes[0].cost == 2.5
-assert dishes[0].name == "½ Chili"
-assert dishes[0].cost == dishes[1].cost
-assert dishes[0].name == dishes[1].name
+    chili_sandwich = Chili()
+    dishes = split_dish(chili_sandwich)
+    assert dishes[0].cost == 2.5
+    assert dishes[0].name == "½ Chili"
+    assert dishes[0].cost == dishes[1].cost
+    assert dishes[0].name == dishes[1].name
 
-
-# sandwich = BaconCheeseburger()
-# dishes = split_dish(sandwich)
-# assert dishes[0].cost == 6.0
-# assert dishes[0].name == "½ Bacon Cheeseburger"
-# assert dishes[0].cost == dishes[1].cost
-# assert dishes[0].name == dishes[1].name
+    # sandwich = BaconCheeseburger()
+    # dishes = split_dish(sandwich)
+    # assert dishes[0].cost == 6.0
+    # assert dishes[0].name == "½ Bacon Cheeseburger"
+    # assert dishes[0].cost == dishes[1].cost
+    # assert dishes[0].name == dishes[1].name

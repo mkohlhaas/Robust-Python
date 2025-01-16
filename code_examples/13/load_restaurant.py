@@ -1,4 +1,6 @@
-from typing import List, Protocol
+from typing import Protocol
+
+import restaurant
 
 
 class Restaurant(Protocol):
@@ -10,13 +12,12 @@ class Restaurant(Protocol):
     def render_menu(self) -> str: ...
 
 
-def load_restaurant(restaurant: Restaurant):
+def load_restaurant(_restaurant: Restaurant):
     # code to load restaurant
     # ...
     pass
 
 
-import restaurant
-
-# mypy does not support modules as protocols yet
-load_restaurant(restaurant)  # type: ignore
+if __name__ == "__main__":
+    # mypy does not support modules as protocols yet
+    load_restaurant(restaurant)  # type: ignore
